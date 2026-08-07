@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyDoc Web UI — Conversão Ultra-Rápida para Markdown</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js para renderizar Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="icon" type="image/png" href="/static/icon.png">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="brand">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <div>
+                    <h1>AnyDoc <span class="badge-tag">Rust Engine</span></h1>
+                    <p class="subtitle">Conversor Ultra-Rápido de Documentos para Markdown LLM-Ready</p>
+                </div>
+            </div>
+            <div class="status-pill" id="healthPill">
+                <span class="status-dot"></span> <span id="statusText">Conectando...</span>
+            </div>
+        </header>
+
+        <!-- Main Upload Zone -->
+        <main class="app-content">
+            <section class="upload-section">
+                <div class="drop-zone" id="dropZone">
+                    <input type="file" id="fileInput" class="file-input" accept=".pdf,.docx,.doc,.pptx,.xlsx,.xls,.odt,.rtf,.epub,.csv">
+                    <div class="drop-zone-content">
+                        <div class="upload-icon-wrapper">
+                            <i class="fa-solid fa-file-arrow-up"></i>
+                        </div>
+                        <h3>Arraste e solte seu documento aqui</h3>
+                        <p>ou clique para selecionar do seu computador</p>
+                        <div class="formats-list">
+                            <span>PDF</span> <span>DOCX</span> <span>DOC</span> <span>PPTX</span> <span>XLSX</span> <span>XLS</span> <span>ODT</span> <span>RTF</span> <span>EPUB</span> <span>CSV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Processing Overlay / Loader -->
+                <div class="loader-container hidden" id="loader">
+                    <div class="spinner"></div>
+                    <p id="loaderMessage">Convertendo com velocidade AnyDoc Rust (< 5ms)...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="result-section hidden" id="resultSection">
+                <div class="result-header">
+                    <div class="file-info">
+                        <i class="fa-solid fa-file-lines file-icon"></i>
+                        <div>
+                            <h4 id="resultFilename">documento.pdf</h4>
+                            <span class="speed-badge" id="speedBadge">⚡ 0.0 ms</span>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <div class="view-toggle">
+                            <button class="toggle-btn active" id="btnPreview"><i class="fa-solid fa-eye"></i> Visualização</button>
+                            <button class="toggle-btn" id="btnRaw"><i class="fa-solid fa-code"></i> Raw Markdown</button>
+                        </div>
+                        <button class="btn btn-primary" id="btnCopy"><i class="fa-solid fa-copy"></i> Copiar</button>
+                        <button class="btn btn-secondary" id="btnDownload"><i class="fa-solid fa-download"></i> Baixar .md</button>
+                    </div>
+                </div>
+
+                <!-- Rendered Markdown View -->
+                <div class="markdown-preview markdown-body" id="markdownPreview"></div>
+
+                <!-- Raw Markdown Textarea -->
+                <textarea class="markdown-raw hidden" id="markdownRaw" readonly></textarea>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Powered by <strong>Firecrawl AnyDoc</strong> em Rust • Rodando via Docker no <strong>Gandalf</strong></p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+name: anydoc-webui
+version: '3.8'
+
+services:
+  anydoc-webui:
+    image: anydoc-webui:latest
+    container_name: anydoc-webui
+    ports:
+      - "8090:8000"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    x-casaos:
+      envs: []
+      ports:
+        - container: "8000"
+          description:
+            en_us: Web UI & API Port
+            pt_br: Porta da Web UI e API
+      volumes: []
+
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: anydoc-webui
+  author: Firecrawl / Homelab
+  category: Utilities
+  description:
+    en_us: High-speed document to LLM Markdown converter powered by Firecrawl AnyDoc.
+    pt_br: Conversor ultra-rápido de documentos para Markdown LLM-Ready com Firecrawl AnyDoc.
+  developer: Firecrawl
+  icon: http://192.168.100.103:8090/static/icon.png
+  thumbnail: http://192.168.100.103:8090/static/icon.png
+  title:
+    custom: ""
+    en_us: AnyDoc Markdown
+    pt_br: AnyDoc Markdown
+  port_map: "8090"
+  scheme: http
+  store_app_id: anydoc-webui
+  index: /
