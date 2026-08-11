@@ -6,29 +6,29 @@ Interface Web moderna e ultra-rápida construída para conversão de documentos 
 
 ## ⚡ Recursos
 - **Motor Rust de Alta Velocidade:** Medição de tempo por conversão em milissegundos (< 5ms).
-- **Suporte a 14+ Formatos:** PDF, DOCX, DOC, PPTX, XLSX, XLS, ODT, RTF, EPUB, CSV, HTML.
+- **Suporte Amplo a Formatos:** PDF, DOCX, DOC, PPTX, XLSX, XLS, ODT, RTF, EPUB, CSV.
 - **Interface Dark Mode:** Visualização ao vivo com suporte a visualização renderizada e raw markdown, cópia em um clique e download de arquivo `.md`.
-- **Dockerizado:** Pronto para implantação em servidores Homelab (ex: Gandalf).
+- **Dockerizado & CasaOS:** Pronto para implantação em servidores Homelab / CasaOS.
 
 ---
 
-## 🚀 Como Rodar no Gandalf / Docker
+## 🚀 Como Rodar via Docker
 
 ### 1. Iniciar via Docker Compose
-No terminal do servidor ou via SSH no diretório `anydoc-webui`:
+No terminal do seu servidor ou máquina local:
 
 ```bash
 docker compose up -d --build
 ```
 
-O container subirá na porta **`8090`**.
+O contêiner subirá na porta **`8090`**.
 
 ### 2. Acessar no Navegador
-Acesse através do IP do servidor Gandalf ou domínio local:
+Acesse através do IP do seu servidor ou localhost:
 ```
-http://gandalf.local:8090
+http://localhost:8090
 # ou
-http://<IP-DO-GANDALF>:8090
+http://<IP-DO-SEU-SERVIDOR>:8090
 ```
 
 ---
